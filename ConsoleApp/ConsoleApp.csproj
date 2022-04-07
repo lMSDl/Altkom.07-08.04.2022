@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BogusService\BogusService.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 

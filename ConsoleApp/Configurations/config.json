@@ -1,5 +1,9 @@
 {
   "NumberOfRepeats": 5,
+  "Bogus": {
+    "Counter": 5
+  },
+
   "Greetings": {
     "Greeting1": "Hello",
     "Greeting2": "Hi",

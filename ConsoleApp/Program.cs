@@ -1,4 +1,6 @@
-﻿using ConsoleApp.Configurations;
+﻿using BogusService;
+using BogusService.Fakers;
+using ConsoleApp.Configurations;
 using ConsoleApp.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +22,11 @@ namespace ConsoleApp
             MakeConfiguration();
             MakeServiceProvider();
 
+            ServiceProvider.GetService<PersonService>().Show();
+        }
+
+        private static void DIDemo()
+        {
             var service = ServiceProvider.GetService<IConsoleService>();
             service.WriteLine("Hello!");
 
@@ -69,11 +76,20 @@ namespace ConsoleApp
             //Transient - zawsze dostarczana ta nowa instancja
             serviceCollection.AddTransient<IConsoleService, ConsoleService>();
             //Scope - nowa instancja dla każdego scope (scope - jedno zapytanie użytkownika do serwisu)
-            //serviceCollection.AddScope<IFontService, SubZeroFontService>();
+            serviceCollection.AddScoped<IFontService, SubZeroFontService>();
             //Singleton - zawsze dostarczana ta sama instancja
-            serviceCollection.AddSingleton<IFontService, StandardFontService>();
+            //serviceCollection.AddSingleton<IFontService, StandardFontService>();
 
             serviceCollection.AddSingleton(Configuration);
+
+
+            serviceCollection.AddScoped<PersonService>()
+                .AddScoped<BaseFaker<Person>, PersonFaker>()
+                .AddScoped<BogusService<Person>>(serviceProvider => new BogusService<Person>(
+                                serviceProvider.GetService<IConfiguration>().GetValue<int>("Bogus:Counter"),
+                                serviceProvider.GetService<BaseFaker<Person>>()));
+
+
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
         }

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{4B363101-FF29-470D-832D-376C66F457F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{4B363101-FF29-470D-832D-376C66F457F5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{EFB67D77-ED8B-4FC9-A09E-04A747F8185A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BogusService", "BogusService\BogusService.csproj", "{E0AA9F01-A855-46A6-873C-F6B4207818EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{EFB67D77-ED8B-4FC9-A09E-04A747F8185A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFB67D77-ED8B-4FC9-A09E-04A747F8185A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFB67D77-ED8B-4FC9-A09E-04A747F8185A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0AA9F01-A855-46A6-873C-F6B4207818EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0AA9F01-A855-46A6-873C-F6B4207818EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0AA9F01-A855-46A6-873C-F6B4207818EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0AA9F01-A855-46A6-873C-F6B4207818EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
