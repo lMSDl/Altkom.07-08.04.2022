@@ -1,5 +1,8 @@
 ﻿using ConsoleApp.Configurations;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using Models;
 using System;
 using System.Threading;
@@ -9,12 +12,46 @@ namespace ConsoleApp
     class Program
     {
         static IConfiguration Configuration { get; set; }
+        static IServiceProvider ServiceProvider { get; set; }
 
         static void Main(string[] args)
         {
             MakeConfiguration();
+            MakeServiceProvider();
+            LoggingDemo();
+        }
 
+        private static void LoggingDemo()
+        {
+            var logger = ServiceProvider.GetService<ILogger<Program>>();
 
+            logger.LogTrace("Trace");
+            logger.LogDebug("Debug");
+            logger.LogInformation("Information");
+            logger.LogWarning("Warrning");
+            logger.LogError("Error");
+            logger.LogCritical("Critical");
+
+            using (var scope = logger.BeginScope("For counter"))
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    logger.LogInformation(i.ToString());
+                }
+            }
+        }
+
+        private static void MakeServiceProvider()
+        {
+            //package Microsoft.Extensions.DependencyInjection
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddLogging(options => options
+                .AddConfiguration(Configuration.GetSection("Logging"))
+                //.SetMinimumLevel(LogLevel.Trace)
+                .AddConsole(/*x => x.IncludeScopes = true*/)
+                .AddDebug()
+                .AddEventLog());
+            ServiceProvider = serviceCollection.BuildServiceProvider();
         }
 
         private static void ConfigurationDemo()

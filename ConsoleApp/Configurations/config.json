@@ -7,5 +7,14 @@
       "Person": "Tom",
       "IA": "Alexa"
     }
+  },
+
+  "Logging": {
+    "LogLevel": {
+      "Default": "debug"
+    },
+    "Console": {
+      "IncludeScopes": true
+    }
   }
 }
