@@ -1,4 +1,5 @@
 ﻿using ConsoleApp.Configurations;
+using ConsoleApp.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -18,7 +19,20 @@ namespace ConsoleApp
         {
             MakeConfiguration();
             MakeServiceProvider();
-            LoggingDemo();
+
+            var service = ServiceProvider.GetService<IConsoleService>();
+            service.WriteLine("Hello!");
+
+            service = ServiceProvider.GetService<IConsoleService>();
+            service.WriteLine("Hello!");
+
+            using (var scope = ServiceProvider.CreateScope())
+            {
+                service = scope.ServiceProvider.GetService<IConsoleService>();
+                service.WriteLine("Hello!");
+            }
+            service = ServiceProvider.GetService<IConsoleService>();
+            service.WriteLine("Hello!");
         }
 
         private static void LoggingDemo()
@@ -51,6 +65,16 @@ namespace ConsoleApp
                 .AddConsole(/*x => x.IncludeScopes = true*/)
                 .AddDebug()
                 .AddEventLog());
+
+            //Transient - zawsze dostarczana ta nowa instancja
+            serviceCollection.AddTransient<IConsoleService, ConsoleService>();
+            //Scope - nowa instancja dla każdego scope (scope - jedno zapytanie użytkownika do serwisu)
+            //serviceCollection.AddScope<IFontService, SubZeroFontService>();
+            //Singleton - zawsze dostarczana ta sama instancja
+            serviceCollection.AddSingleton<IFontService, StandardFontService>();
+
+            serviceCollection.AddSingleton(Configuration);
+
             ServiceProvider = serviceCollection.BuildServiceProvider();
         }
 
