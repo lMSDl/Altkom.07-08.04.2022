@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ConsoleApp.Configurations;
+using Microsoft.Extensions.Configuration;
 using Models;
 using System;
 using System.Threading;
@@ -27,6 +28,23 @@ namespace ConsoleApp
             
             Console.WriteLine($"{section["Greeting1"]} {subsection["Person"]}!");
             Console.WriteLine($"{config["Greetings:Greeting2"]} {config["Greetings:Targets:IA"]}!");
+
+            var greetings = new Greetings();
+            config.GetSection("Greetings").Bind(greetings);
+
+            var appConfig = new AppConfig();
+            //package Microsoft.Extensions.Configuration.Binder
+            config.Bind(appConfig);
+
+            //var no = int.Parse(config["NumberOfRepeats"]);
+            var no = config.GetValue<int>("NumberOfRepeats");
+            for (int i = 0; i < no; i++)
+            {
+                Console.WriteLine($"{greetings.Greeting1} {greetings.Targets.Person}!");
+                Console.WriteLine($"{appConfig.Greetings.Greeting2} {appConfig.Greetings.Targets.IA}!");
+            }
+
+
         }
     }
 }
