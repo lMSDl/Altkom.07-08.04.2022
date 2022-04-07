@@ -33,3 +33,20 @@
     ```
     dotnet add reference <ŚCIEŻKA_PROJEKTU>
     ```
+* Publikacja
+    * plik wykonywalny zależny od platformy dla bieżącej platformy
+    ```
+    dotnet publish
+    ```
+    * plik wykonywalny zależny od platformy dla określonej platformy
+    ```
+    dotnet publish -r <IDENTYFIKATOR_ŚRODOWISKA> --self-contained false
+    ```
+    * samodzielny plik wykonywalny
+    ```
+    dotnet publish -r <IDENTYFIKATOR_ŚRODOWISKA>
+    ```
+    * samodzielny plik wykonywalny + ReadyToRun
+    ```
+    dotnet publish -r <IDENTYFIKATOR_ŚRODOWISKA> -p:PublishReadyToRun=true
+    ```
