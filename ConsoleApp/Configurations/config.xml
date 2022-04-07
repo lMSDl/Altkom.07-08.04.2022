@@ -1,3 +1,10 @@
 <configurations>
-	<HelloXml>XML</HelloXml>
+	<Greetings>
+		<Greeting1>Hello</Greeting1>
+		<Greeting2>Hi</Greeting2>
+		<Targets>
+			<Prson>Tom</Prson>
+			<IA>Alexa</IA>
+		</Targets>
+	</Greetings>
 </configurations>

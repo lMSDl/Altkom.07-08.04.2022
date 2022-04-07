@@ -22,15 +22,11 @@ namespace ConsoleApp
                 .AddYamlFile("Configurations/config.yaml")
                 .Build();
 
-            while (true)
-            {
-                Console.WriteLine($"Hello {config["HelloJson"]}!");
-                Console.WriteLine($"Hello {config["HelloXml"]}!");
-                Console.WriteLine($"Hello {config["HelloIni"]}!");
-                Console.WriteLine($"Hello {config["HelloYaml"]}!");
-                Thread.Sleep(1000);
-                Console.Clear();
-            }
+            var section = config.GetSection("Greetings");
+            var subsection = section.GetSection("Targets");
+            
+            Console.WriteLine($"{section["Greeting1"]} {subsection["Person"]}!");
+            Console.WriteLine($"{config["Greetings:Greeting2"]} {config["Greetings:Targets:IA"]}!");
         }
     }
 }

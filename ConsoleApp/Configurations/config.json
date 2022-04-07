@@ -1,3 +1,10 @@
 {
-  "HelloJson":  "Json"
+  "Greetings": {
+    "Greeting1": "Hello",
+    "Greeting2": "Hi",
+    "Targets": {
+      "Person": "Tom",
+      "IA": "Alexa"
+    }
+  }
 }
