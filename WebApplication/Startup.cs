@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApplication
 {
@@ -22,20 +19,78 @@ namespace WebApplication
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //if (env.IsDevelopment())
-            if (env.IsEnvironment("development"))
+            app.Use(async (context, next) =>
             {
-                app.UseDeveloperExceptionPage();
-            }
+                Console.WriteLine("Before next in use1");
 
-            app.UseRouting();
+                await next();
 
-            app.UseEndpoints(endpoints =>
+                Console.WriteLine("After next in use1");
+            });
+
+            app.Map("/Bye", byeApp =>
             {
-                endpoints.MapGet("/", async context =>
+                byeApp.Use(async (context, next) =>
+                 {
+                     Console.WriteLine("Before Bye next in use1");
+
+                     await next();
+
+                     Console.WriteLine("After Bye next in use1");
+                 });
+
+                byeApp.Map("/2", bye2App =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    bye2App.Run(async context =>
+                    {
+                        Console.WriteLine("Before Bye response");
+                        await context.Response.WriteAsync("bye 2");
+                        Console.WriteLine("After Bye response");
+                    });
+
                 });
+
+                byeApp.Run(async context =>
+                {
+                    Console.WriteLine("Before Bye response");
+                    await context.Response.WriteAsync("Bye!");
+                    Console.WriteLine("After Bye response");
+                });
+            });
+
+
+            app.Use(async (context, next) =>
+            {
+                Console.WriteLine("Before next in use2");
+
+                await next();
+
+                Console.WriteLine("After next in use2");
+            });
+            app.Use(async (context, next) =>
+            {
+                Console.WriteLine("Before next in use3");
+
+                await next();
+
+                Console.WriteLine("After next in use3");
+            });
+
+            app.MapWhen(context => context.Request.Query.TryGetValue("name", out _), nameApp =>
+            {
+                nameApp.Run(async context =>
+                {
+                    Console.WriteLine("Before nameApp response");
+                    await context.Response.WriteAsync($"Hello {context.Request.Query["name"]}!");
+                    Console.WriteLine("After nameApp response");
+                });
+            });
+
+            app.Run(async context =>
+            {
+                Console.WriteLine("Before response");
+                await context.Response.WriteAsync("Hello!");
+                Console.WriteLine("After response");
             });
         }
     }
