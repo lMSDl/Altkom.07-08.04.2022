@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BogusService", "BogusService\BogusService.csproj", "{E0AA9F01-A855-46A6-873C-F6B4207818EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{330BD0B1-9207-4129-B32A-34ED80871141}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E0AA9F01-A855-46A6-873C-F6B4207818EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0AA9F01-A855-46A6-873C-F6B4207818EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0AA9F01-A855-46A6-873C-F6B4207818EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{330BD0B1-9207-4129-B32A-34ED80871141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{330BD0B1-9207-4129-B32A-34ED80871141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{330BD0B1-9207-4129-B32A-34ED80871141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{330BD0B1-9207-4129-B32A-34ED80871141}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
