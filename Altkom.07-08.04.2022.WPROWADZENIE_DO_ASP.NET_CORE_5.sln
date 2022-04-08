@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BogusService", "BogusServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{330BD0B1-9207-4129-B32A-34ED80871141}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationRouting", "WebApplicationRouting\WebApplicationRouting.csproj", "{9F578203-6CF7-439D-8FEE-4FFF60BBBB07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{330BD0B1-9207-4129-B32A-34ED80871141}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{330BD0B1-9207-4129-B32A-34ED80871141}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{330BD0B1-9207-4129-B32A-34ED80871141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F578203-6CF7-439D-8FEE-4FFF60BBBB07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F578203-6CF7-439D-8FEE-4FFF60BBBB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F578203-6CF7-439D-8FEE-4FFF60BBBB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F578203-6CF7-439D-8FEE-4FFF60BBBB07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
